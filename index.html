@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inspire – Share Your Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      scroll-behavior: smooth;
+      height: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Fixed Background Container */
+    .background {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -2;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0;
+      transition: opacity 2s ease-in-out, transform 10s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* Falling Logos */
+    .falling-logos-container {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      overflow: visible;
+    }
+    .logo-fall {
+      position: absolute;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      background: url('logo.png') no-repeat center/contain;
+      opacity: 0.9;
+      animation-name: fallLogos;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform;
+    }
+
+    @keyframes fallLogos {
+      0% {
+        transform: translateY(-200px) rotate(0deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Site Content */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      background: rgba(10, 25, 47, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+    .logo span {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    nav a {
+      margin-left: 2rem;
+      font-weight: 500;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00bfff;
+    }
+
+    section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
+      z-index: 5;
+    }
+    section::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
+    section h1, section h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    section p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .cta {
+      margin-top: 2rem;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 30px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .cta a:hover {
+      background: #00bfff;
+      border-color: #00bfff;
+    }
+
+    footer {
+      background: #0a192f;
+      text-align: center;
+      color: #999;
+      padding: 1rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; }
+      nav a { margin: 1rem 0; display: block; }
+      section h1, section h2 { font-size: 2rem; }
+      section p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed Background Crossfade -->
+  <div class="background">
+    <div class="slide" style="background-image: url('pic.png');"></div>
+    <div class="slide" style="background-image: url('pic1.png');"></div>
+  </div>
+
+  <!-- Falling Logos -->
+  <div class="falling-logos-container" aria-hidden="true"></div>
+
+  <!-- Site Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Inspire Logo" />
+      <span>Inspire</span>
+    </div>
+    <nav>
+      <a href="#hero1">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Sections -->
+  <section id="hero1">
+    <div>
+      <h1>Welcome to Inspire</h1>
+      <p>Discover stories that uplift, motivate, and remind you that life is full of meaning—even in unexpected places with Websites Explicity created for you business.</p>
+      <div class="cta"><a href="about.html">Get Started</a></div>
+    </div>
+  </section>
+
+  <section id="hero2">
+    <div>
+      <h2>Advertise at a global scale</h2>
+      <p>Put your products and business on the World Wide Web.</p>
+    </div>
+  </section>
+
+  <section id="hero3">
+    <div>
+      <h2>Lets's build together</h2>
+      <p>Ready to elevate your online presence? Reach out today and let’s create something extraordinary that drives real results for your business or personal brand.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Russel Mafarchisi. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Background Crossfade
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    slides[current].classList.add('active');
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+
+    // Falling Logos
+    const logosCount = 20;
+    const container = document.querySelector('.falling-logos-container');
+
+    for (let i = 0; i < logosCount; i++) {
+      const logo = document.createElement('div');
+      logo.classList.add('logo-fall');
+
+      const duration = 6 + Math.random() * 4;
+      const delay = -Math.random() * duration; // Negative to start mid-animation
+
+      logo.style.left = `${Math.random() * 90}vw`;
+      logo.style.animationDuration = `${duration}s`;
+      logo.style.animationDelay = `${delay}s`;
+      logo.style.filter = `hue-rotate(${Math.floor(Math.random() * 360)}deg)`;
+
+      container.appendChild(logo);
+    }
+  </script>
+
+</body>
+</html>
